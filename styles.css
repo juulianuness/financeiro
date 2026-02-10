@@ -127,6 +127,10 @@ input {
   font-size: 0.95rem;
 }
 
+/* =========================
+   BUTTONS
+========================= */
+
 button {
   padding: 0.75rem 1rem;
   border-radius: 8px;
@@ -140,6 +144,34 @@ button {
 
 button:hover {
   opacity: 0.9;
+}
+
+/* BOTÃO PAGAR / PAGO */
+
+.pay-btn {
+  background: #e5e7eb;
+  color: var(--text);
+  border: 1px solid var(--border);
+  font-weight: 600;
+}
+
+.pay-btn.paid {
+  background: var(--success);
+  color: #fff;
+  border-color: var(--success);
+}
+
+/* BOTÃO LIMPAR */
+
+.clear-btn {
+  background: transparent;
+  color: var(--muted);
+  border: 1px dashed var(--border);
+}
+
+.clear-btn:hover {
+  color: var(--danger);
+  border-color: var(--danger);
 }
 
 /* =========================
@@ -158,7 +190,8 @@ button:hover {
   border-radius: 14px;
   padding: 0.75rem;
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 110px auto auto;
+  align-items: center;
   gap: 0.5rem;
 }
 
@@ -175,33 +208,38 @@ button:hover {
   gap: 0.5rem;
 }
 
-.clear-btn {
-  background: transparent;
-  color: var(--muted);
-  border: 1px dashed var(--border);
-}
+/* =========================
+   MOBILE
+========================= */
 
-.clear-btn:hover {
-  color: var(--danger);
-  border-color: var(--danger);
+@media (max-width: 767px) {
+  .expense-card {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+  }
+
+  .expense-card input {
+    width: 100%;
+    text-align: left;
+  }
+
+  .expense-actions {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .expense-actions button {
+    flex: 1;
+  }
 }
 
 /* =========================
-   DESKTOP ADJUSTMENTS
+   DESKTOP
 ========================= */
 
 @media (min-width: 768px) {
   .summary {
     grid-template-columns: repeat(3, 1fr);
-  }
-
-  .expense-card {
-    grid-template-columns: 1fr 120px auto auto;
-    align-items: center;
-  }
-
-  .expense-actions {
-    display: contents;
   }
 
   select {

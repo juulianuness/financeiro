@@ -26,7 +26,6 @@ const totalExpensesEl = document.getElementById('totalExpenses');
 const totalPaidEl = document.getElementById('totalPaid');
 const totalPendingEl = document.getElementById('totalPending');
 
-/* Meses */
 const months = [
   'Janeiro','Fevereiro','Março','Abril','Maio','Junho',
   'Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'
@@ -83,12 +82,17 @@ function render() {
 
     card.innerHTML = `
       <strong>${c.name}</strong>
-      <input type="number" value="${item.value || ''}"
+
+      <input type="number" min="0" value="${item.value || ''}"
         onchange="updateValue('${c.name}', this.value)">
-      <button onclick="togglePaid('${c.name}')">
+
+      <button class="pay-btn ${item.paid ? 'paid' : ''}"
+        onclick="togglePaid('${c.name}')">
         ${item.paid ? 'Pago' : 'Pagar'}
       </button>
-      <button class="clear-btn" onclick="clearValue('${c.name}')">
+
+      <button class="clear-btn"
+        onclick="clearValue('${c.name}')">
         Limpar
       </button>
     `;
@@ -100,7 +104,7 @@ function render() {
 }
 
 function updateValue(cat, value) {
-  expenses[getMonth()][cat] = expenses[getMonth()][cat] || { paid: false };
+  expenses[getMonth()][cat] ||= { paid: false };
   expenses[getMonth()][cat].value = Number(value);
   save();
   updateSummary();
@@ -113,8 +117,7 @@ function togglePaid(cat) {
 }
 
 function clearValue(cat) {
-  expenses[getMonth()][cat].value = 0;
-  expenses[getMonth()][cat].paid = false;
+  expenses[getMonth()][cat] = { value: 0, paid: false };
   save();
   render();
 }
@@ -123,7 +126,7 @@ document.getElementById('addCategoryBtn').onclick = () => {
   const input = document.getElementById('newCategoryName');
   if (!input.value.trim()) return;
 
-  categories.push({ name: input.value });
+  categories.push({ name: input.value.trim() });
   input.value = '';
   save();
   render();
