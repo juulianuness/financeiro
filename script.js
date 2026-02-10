@@ -1,8 +1,20 @@
 const categories = JSON.parse(localStorage.getItem('categories')) || [
-  { name: 'Aluguel' },
+  { name: 'Casa' },
+  { name: 'Condomínio' },
+  { name: 'IPTU' },
+  { name: 'Gás' },
   { name: 'Luz' },
-  { name: 'Água' },
-  { name: 'Internet' }
+  { name: 'Banco do Brasil' },
+  { name: 'Nubank Helyton' },
+  { name: 'Nubank Julia' },
+  { name: 'Vivo Helyton' },
+  { name: 'Vivo Julia' },
+  { name: 'Juliana' },
+  { name: 'Internet' },
+  { name: 'Taxa de lixo' },
+  { name: 'Estácio' },
+  { name: 'Carro' },
+  { name: 'MELI' }
 ];
 
 const expenses = JSON.parse(localStorage.getItem('expenses')) || {};
