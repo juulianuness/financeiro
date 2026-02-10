@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Organização Financeira</title>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <main class="container">
+    <header class="header">
+      <h1>Controle Financeiro</h1>
+      <p>Organize suas despesas mensais</p>
+    </header>
+
+    <section class="top-bar">
+      <select id="monthSelect"></select>
+    </section>
+
+    <section class="summary">
+      <div class="card">
+        <span>Total</span>
+        <strong id="totalExpenses">R$ 0,00</strong>
+      </div>
+      <div class="card positive">
+        <span>Pago</span>
+        <strong id="totalPaid">R$ 0,00</strong>
+      </div>
+      <div class="card negative">
+        <span>Pendente</span>
+        <strong id="totalPending">R$ 0,00</strong>
+      </div>
+    </section>
+
+    <section class="add-category">
+      <input id="newCategoryName" placeholder="Nova categoria">
+      <button id="addCategoryBtn">Adicionar</button>
+    </section>
+
+    <section id="expensesGrid" class="expenses-grid"></section>
+  </main>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
